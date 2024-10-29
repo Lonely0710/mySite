@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
-    <title>主界面</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KwvQzApKn7g71Mv+u7yZ9X1Lz/GSsVuNH7f8G8Ky7FSe2Vk9v/YjK0W2ZCgR+9yV+S8HgU+K/nH/HAU0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>yll's WebSite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9; /* 匹配React组件中的背景色 */
+            background-color: #f4f4f9;
+            /* 匹配React组件中的背景色 */
             margin: 0;
             padding: 0;
             height: 100vh;
         }
+
         nav {
             width: 200px;
             height: 100vh;
-            background-color: #0052cc; /* 侧边栏背景色 */
+            background-color: #0052cc;
+            /* 侧边栏背景色 */
             color: white;
             padding: 20px;
             box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
             position: fixed;
         }
+
         nav a {
             margin: 0 10px;
             text-decoration: none;
@@ -30,56 +37,91 @@
             align-items: center;
             padding: 10px 15px;
         }
+
         nav a:hover {
             background-color: #0041a3;
             border-radius: 5px;
             transition: background-color 0.3s ease;
         }
+
         nav .fa {
             margin-right: 10px;
         }
+
         .content {
-            margin-left: 220px; /* 侧边栏宽度加上padding */
+            margin-left: 220px;
+            /* 侧边栏宽度加上padding */
             padding: 40px;
             width: calc(100% - 220px);
         }
+
         nav ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
         }
+
         nav ul li {
             margin: 20px 0;
         }
+
         nav h1 {
             text-align: center;
             margin-bottom: 20px;
             font-size: 28px;
             color: #333;
         }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        li {
+            margin-bottom: 10px; /* 为每行添加底部间距 */
+        }
+        li a {
+            display: flex;
+            align-items: center; /* 垂直居中 */
+            color: inherit; /* 链接颜色与字体颜色一致 */
+            text-decoration: none; /* 去除下划线 */
+            gap: 10px; /* 图标和文字之间的间距 */
+            font-size: 20px;
+        }
+        li a:hover {
+            background-color: #0041a3; /* 鼠标悬浮时的背景色 */
+        }
+        .fa {
+            font-size: 26px; /* 图标大小 */
+            color: aliceblue; /* 图标颜色 */
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="sidebar-header">
             <h2>
-                <i class="fas fa-chalkboard-teacher"></i> 我的网站
+                <i class="fa-icon fa fa-home"></i></i> 我的网站
             </h2>
         </div>
         <ul>
-            <li><a href="about-me.html"><i class="fas fa-user-circle"></i> 个人简介</a></li>
-            <li><a href="university-life.html"><i class="fas fa-university"></i> 大学生活</a></li>
-            <li><a href="my-assignments.html"><i class="fas fa-book-open"></i> 我的作业</a></li>
-        </ul>
+    <ul>
+        <li><a href="about-me.html"><i class="fa-icon fa fa-user-circle" style="margin: 7px;"></i> 个人简介</a></li>
+        <li><a href="university-life.html"><i class="fa-icon fa fa-university" style="margin: 7px;"></i> 大学生活</a></li>
+        <li><a href="my-assignments.html"><i class="fa-icon fa fa-folder-open" style="margin: 7px;"></i> 我的作业</a></li>
+    </ul>
     </nav>
     <div class="content">
-        <h1>欢迎来到我的网站</h1>
+        <h1><i class="fa fa-flower" style="font-size:36px;color: blue"></i>欢迎来到我的网站</h1>
         <p>请选择以下链接了解更多信息。</p>
         <nav>
-            <a href="about-me.html">｜个人简介</a> 
-            <a href="university-life.html">｜大学生活</a> 
+            <a href="about-me.html">｜个人简介</a>
+            <a href="university-life.html">｜大学生活</a>
             <a href="my-assignments.html">｜我的作业</a>
         </nav>
     </div>
 </body>
+
 </html>

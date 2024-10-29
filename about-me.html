@@ -1,77 +1,210 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>个人简介</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- 确保链接正确 -->
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9; /* 统一的背景色 */
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f9;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
+            flex-direction: column;
+            background: linear-gradient(-45deg, #4facfe, #00f2fe, #1d43c1, #a2b6df);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            color: #0052cc;
+            font-size: 48px;
+            margin: 20px 0;
+            position: relative;
+            background: -webkit-linear-gradient(45deg, #e2e2ef, #dcdbe3, #4c99eb, #292fdb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: moveBg 10s linear infinite;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes moveBg {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .profile-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 80%;
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+
+        .profile {
             background-color: #fff;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .profile {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 300px;
             text-align: center;
-            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
         }
+
+        .profile:hover {
+            transform: translateY(-10px);
+        }
+
         .profile img {
-            max-width: 150px;
-            border-radius: 50%; /* 圆形头像 */
-            border: 4px solid #0052cc; /* 头像边框 */
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #0052cc;
+            margin-top: -75px;
+            object-fit: cover;
         }
+
         .profile h2 {
-            color: #333;
-            margin-top: 10px;
+            color: #0052cc;
+            font-size: 24px;
+            margin: 20px 0 5px;
         }
+
         .profile p {
             color: #666;
             margin: 5px 0;
+            font-size: 16px;
+            text-align: left;
         }
-        .return-link {
-            text-align: right;
-            margin-top: 20px;
+
+        .profile p b {
+            font-weight: bold;
+            display: inline-block;
+            margin-right: 5px;
         }
-        .return-link a {
+
+        .self-introduction,
+        .friend-links {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 0 10px;
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .self-introduction:hover,
+        .friend-links:hover {
+            transform: translateY(-10px);
+        }
+
+        .self-introduction h3,
+        .friend-links h3 {
+            color: #0052cc;
+            font-size: 24px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .self-introduction h3::before {
+            content: '\f007';
+            font-family: 'Font Awesome 6 Free';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .friend-links h3::before {
+            content: '\f19c';
+            font-family: 'Font Awesome 6 Free';
+            position: absolute;
+            left: 0;
+        }
+
+        .self-introduction p,
+        .friend-links a {
+            color: #666;
+            margin: 10px 0;
+            font-size: 16px;
+            text-decoration: none;
+        }
+
+        .friend-links ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .friend-links li {
+            margin: 5px 0;
+        }
+
+        .friend-links a {
             color: #0052cc;
             text-decoration: none;
         }
-        .return-link a:hover {
+
+        .friend-links a:hover {
             text-decoration: underline;
-        }
-        .friend-link {
-            margin-top: 20px;
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>个人简介</h1>
+    <h1>个人简介</h1>
+    <div class="profile-container">
+        <div class="self-introduction">
+            <h3>自我介绍</h3>
+            <p>大家好，我是杨龙澧，一名计算机科学与技术专业的学生。</p>
+            <p>我对编程和新技术充满热情，喜欢探索和学习。</p>
+        </div>
         <div class="profile">
-            <!-- 插入图片 -->
             <img src="assets/profile.JPG" alt="个人照片">
-            <h2>张三</h2>
-            <p>职业：前端开发工程师</p>
-            <p>公司：月之暗面科技有限公司</p>
-            <p>联系方式：zhangsan@example.com</p>
+            <h2>杨龙澧</h2>
+            <p><b>学号：</b>22231301</p>
+            <p><b>学院：</b>计算机科学与技术</p>
+            <p><b>班级：</b>计科2206</p>
+            <p><b>联系方式：</b>22231301@bjtu.edu.cn</p>
         </div>
-        <p>这里是您的个人简介内容...</p>
-        <!-- 返回主界面 -->
-        <div class="return-link">
-            <a href="index.html">返回主界面</a>
-        </div>
-        <!-- 友情链接 -->
-        <div class="friend-link">
-            <p>友情链接：<a href="http://www.example.com">北京交通大学</a></p>
+        <div class="friend-links">
+            <h3>About My School</h3>
+            <ul>
+                <li><a href="https://www.bjtu.edu.cn/">北京交通大学</a></li>
+                <li><a href="https://cs.bjtu.edu.cn/">计算机科学与技术学院</a></li>
+                <li><a href="http://iis.bjtu.edu.cn/">信息科学研究所</a></li>
+                <li><a href="http://insis.bjtu.edu.cn/">网络科学与智能系统研究所</a></li>
+            </ul>
         </div>
     </div>
 </body>
+
 </html>

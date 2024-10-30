@@ -1,17 +1,123 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <title>大学生活</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 背景和标题样式 */
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #4facfe, #00f2fe, #1d43c1, #a2b6df);
+            background-size: 400% 400%;
+            animation: gradientBackground 15s ease infinite;
+        }
+
+        @keyframes gradientBackground {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            font-size: 48px;
+            color: #0052cc;
+            background: -webkit-linear-gradient(45deg, #e2e2ef, #dcdbe3, #4c99eb, #292fdb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: moveBg 10s linear infinite;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        @keyframes moveBg {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        /* 图片墙样式 */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transform-origin: preserve-3d;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transition: 0.5s;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0002);
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 三维旋转效果 */
+        .box:hover {
+            transform: perspective(500px) rotateY(0) scale(1.15);
+            z-index: 2;
+        }
+
+        .container .box:hover~.box {
+            transform: perspective(500px) rotateY(30deg) scale(0.9);
+            /* 左边的图片向内旋转 */
+        }
+
+        .container .box:hover~.box:hover {
+            transform: perspective(500px) rotateY(-30deg) scale(0.9);
+            /* 右边的图片向内旋转 */
+        }
+
+        .container:hover>.box:not(:hover) {
+            filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.5));
+        }
+    </style>
 </head>
+
 <body>
     <h1>大学生活</h1>
-    <p>这里是您在大学期间的经历和活动...</p>
-    <!-- 插入图片 -->
-    <img src="university-photo.jpg" alt="大学生活照片">
-    <!-- 返回主界面 -->
-    <a href="index.html">返回主界面</a>
-    <!-- 友情链接 -->
-    <p>友情链接：<a href="http://www.example.com">计算机学院</a></p>
+    <div class="container">
+        <div class="box"><img src="assets/8881730290738_.pic.jpg" alt="大学生活图片1"></div>
+        <div class="box"><img src="assets/8871730290737_.pic.jpg" alt="大学生活图片2"></div>
+        <div class="box"><img src="assets/8891730290738_.pic.jpg" alt="大学生活图片3"></div>
+        <div class="box"><img src="assets/8901730290739_.pic.jpg" alt="大学生活图片4"></div>
+        <div class="box"><img src="assets/8911730290740_.pic.jpg" alt="大学生活图片5"></div>
+    </div>
 </body>
+
 </html>

@@ -11,117 +11,230 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
-            /* 匹配React组件中的背景色 */
             margin: 0;
             padding: 0;
-            height: 100vh;
-        }
-
-        nav {
-            width: 200px;
-            height: 100vh;
-            background-color: #0052cc;
-            /* 侧边栏背景色 */
-            color: white;
-            padding: 20px;
-            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
-            position: fixed;
-        }
-
-        nav a {
-            margin: 0 10px;
-            text-decoration: none;
-            color: white;
-            font-size: 18px;
             display: flex;
+            justify-content: center;
             align-items: center;
-            padding: 10px 15px;
-        }
-
-        nav a:hover {
-            background-color: #0041a3;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        nav .fa {
-            margin-right: 10px;
-        }
-
-        .content {
-            margin-left: 220px;
-            /* 侧边栏宽度加上padding */
-            padding: 40px;
-            width: calc(100% - 220px);
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 20px 0;
-        }
-
-        nav h1 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 28px;
-            color: #333;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
+            height: 100vh;
             flex-direction: column;
         }
-        li {
-            margin-bottom: 10px; /* 为每行添加底部间距 */
+
+        h1 {
+            font-size: 36px;
+            margin: 20px;
+            background: -webkit-linear-gradient(45deg, #e2e2ef, #dcdbe3, #4c99eb, #292fdb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 10px 20px;
+            text-align: center;
         }
-        li a {
+
+        .container {
             display: flex;
-            align-items: center; /* 垂直居中 */
-            color: inherit; /* 链接颜色与字体颜色一致 */
-            text-decoration: none; /* 去除下划线 */
-            gap: 10px; /* 图标和文字之间的间距 */
-            font-size: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
         }
-        li a:hover {
-            background-color: #0041a3; /* 鼠标悬浮时的背景色 */
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 280px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
         }
-        .fa {
-            font-size: 26px; /* 图标大小 */
-            color: aliceblue; /* 图标颜色 */
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            color: #0052cc;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 16px;
+            margin: 8px 0;
+            text-align: center;
+        }
+
+        .card a {
+            color: #0052cc;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .card a:hover {
+            color: #003d99;
+        }
+
+        .card i {
+            font-size: 50px;
+            color: #0052cc;
+            margin-bottom: 15px;
+        }
+
+        /* 右侧小球样式 */
+        .floating-btn {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            background-color: #0052cc;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, background-color 0.3s;
+        }
+
+        .floating-btn:hover {
+            transform: scale(1.1);
+            background-color: #003d99;
+        }
+
+        .floating-btns-container {
+            position: fixed;
+            top: 30%; /* 可调节位置以避免重叠 */
+            right: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px; /* 确保按钮间距 */
+        }
+
+        /* 浮窗样式 */
+        .popup {
+            display: none;
+            position: fixed;
+            width: 250px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            z-index: 10;
+            transition: all 0.3s ease;
+            /* 添加平滑过渡 */
+        }
+
+        .popup h3 {
+            font-size: 18px;
+            color: #0052cc;
+            margin-bottom: 10px;
+            margin: 10px 0 10px; /* 将上边距设置为负值 */
+        }
+
+        .popup p,
+        .popup a {
+            color: #666;
+            font-size: 14px;
+            margin: 8px 0;
+            text-decoration: none;
+        }
+
+        .popup a {
+            color: #0052cc;
         }
     </style>
 </head>
 
 <body>
-    <nav>
-        <div class="sidebar-header">
-            <h2>
-                <i class="fa-icon fa fa-home"></i></i> 我的网站
-            </h2>
+    <h1>Welcome to Yll's WebSite <i class="fa fa-globe"></i></h1>
+    <div class="container">
+        <div class="card">
+            <i class="fa fa-user-circle"></i>
+            <h2>个人简介</h2>
+            <p>了解我的个人信息、兴趣爱好和背景。</p>
+            <a href="about-me.html">查看详情</a>
         </div>
-        <ul>
-    <ul>
-        <li><a href="about-me.html"><i class="fa-icon fa fa-user-circle" style="margin: 7px;"></i> 个人简介</a></li>
-        <li><a href="university-life.html"><i class="fa-icon fa fa-university" style="margin: 7px;"></i> 大学生活</a></li>
-        <li><a href="my-assignments.html"><i class="fa-icon fa fa-folder-open" style="margin: 7px;"></i> 我的作业</a></li>
-    </ul>
-    </nav>
-    <div class="content">
-        <h1><i class="fa fa-flower" style="font-size:36px;color: blue"></i>欢迎来到我的网站</h1>
-        <p>请选择以下链接了解更多信息。</p>
-        <nav>
-            <a href="about-me.html">｜个人简介</a>
-            <a href="university-life.html">｜大学生活</a>
-            <a href="my-assignments.html">｜我的作业</a>
-        </nav>
+        <div class="card">
+            <i class="fa fa-university"></i>
+            <h2>大学生活</h2>
+            <p>分享在大学生活中的经历和点滴。</p>
+            <a href="university-life.html">查看详情</a>
+        </div>
+        <div class="card">
+            <i class="fa fa-folder-open"></i>
+            <h2>我的作业</h2>
+            <p>查看我在学业中完成的项目和作业。</p>
+            <a href="my-assignments.html">查看详情</a>
+        </div>
     </div>
+
+    <!-- 右侧悬浮按钮容器 -->
+    <div class="floating-btns-container">
+        <div class="floating-btn" id="courseBtn">
+            <i class="fa fa-info-circle"></i>
+        </div>
+        <div class="floating-btn" id="friendLinkBtn" style="top: 100px;">
+            <i class="fa fa-link"></i>
+        </div>
+    </div>
+
+    <!-- 课程信息浮窗 -->
+    <div id="coursePopup" class="popup" style="top: 30%; right: 120px;">
+        <h3>课程信息</h3>
+        <p>课程名称：<b>《计算机类专业导论》</b></p>
+        <p>授课教师：<b>张淳杰</b></p>
+    </div>
+
+    <!-- 友链浮窗 -->
+    <div id="friendLinkPopup" class="popup" style="top: 100px; right: 120px;">
+        <h3>GitHub Pages</h3>
+        <p>这是我经由 GitHub Pages 部署的网站：</p>
+        <a href="https://lonely0710.github.io/mySite/" target="_blank">lonely0710 的网站</a>
+    </div>
+
+    <script>
+        // 鼠标悬停时显示浮窗
+        document.getElementById('courseBtn').addEventListener('mouseenter', function () {
+            document.getElementById('coursePopup').style.display = 'block';
+        });
+        document.getElementById('courseBtn').addEventListener('mouseleave', function () {
+            // 不立即隐藏，待鼠标移出悬浮窗后再隐藏
+            setTimeout(function () {
+                if (!document.getElementById('coursePopup').matches(':hover')) {
+                    document.getElementById('coursePopup').style.display = 'none';
+                }
+            }, 100);
+        });
+
+        document.getElementById('friendLinkBtn').addEventListener('mouseenter', function () {
+            document.getElementById('friendLinkPopup').style.display = 'block';
+        });
+        document.getElementById('friendLinkBtn').addEventListener('mouseleave', function () {
+            // 不立即隐藏，待鼠标移出悬浮窗后再隐藏
+            setTimeout(function () {
+                if (!document.getElementById('friendLinkPopup').matches(':hover')) {
+                    document.getElementById('friendLinkPopup').style.display = 'none';
+                }
+            }, 100);
+        });
+
+        // 鼠标移出悬浮窗时隐藏浮窗
+        document.getElementById('coursePopup').addEventListener('mouseleave', function () {
+            document.getElementById('coursePopup').style.display = 'none';
+        });
+
+        document.getElementById('friendLinkPopup').addEventListener('mouseleave', function () {
+            document.getElementById('friendLinkPopup').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
